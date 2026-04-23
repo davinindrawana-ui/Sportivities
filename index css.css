@@ -1,0 +1,426 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* NAVBAR (TIDAK DIUBAH) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.judul {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    gap: 13px;
+}
+
+.logo{
+    width: 33px;
+    height:33px;
+    object-fit: contain;
+    flex-shrink:0;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #ffd700;
+}
+
+.nav-link.active {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* DROPDOWN (TIDAK DIUBAH) */
+.dropdown-arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: 0.3s;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.nav-item:hover .dropdown-arrow {
+    transform: rotate(-135deg);
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    color: #333;
+    padding: 1rem;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-link:hover {
+    background: #f1f1f1;
+}
+
+/* HERO - IMPROVED */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+    animation: heroFloat 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(1deg); }
+    66% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 70px);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffd700, #ffed4a, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: clamp(18px, 3vw, 24px);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(45deg, #ffd700, #ffed4a);
+    color: #111;
+    padding: 18px 40px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.6);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.7); }
+    100% { box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4); }
+}
+
+.hero-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { left: 80%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 90%; animation-delay: 3s; }
+.particle:nth-child(5) { left: 30%; animation-delay: 4s; }
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* SECTION */
+section {
+    padding: 120px 0;
+}
+
+.section-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    background: linear-gradient(45deg, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(45deg, #ffd700, #ffed4a);
+    border-radius: 2px;
+}
+.footer {
+    background: #0f172a;
+    color: white;
+    padding: 60px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+/* JUDUL */
+.footer h2,
+.footer h3 {
+    margin-bottom: 15px;
+}
+
+/* TEXT */
+.footer p {
+    color: #cbd5f5;
+    font-size: 14px;
+}
+
+/* LINK */
+.footer a {
+    display: block;
+    color: #cbd5f5;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: #ffd700;
+}
+
+/* SOCIAL ICON */
+.socials {
+    margin-top: 10px;
+}
+
+.socials a {
+    display: inline-block;
+    margin-right: 10px;
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.socials a:hover {
+    background: #ffd700;
+    color: black;
+}
+
+.music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    will-change: transform;
+    height: 60px;
+    width: 60px;
+    background: #111;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* expand saat hover */
+.music-widget:hover {
+    width: 265px;
+}
+
+/* gambar bulat */
+.music-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* bagian dalam */
+.music-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul saat hover */
+.music-widget:hover .music-expanded {
+    opacity: 1;
+}
+
+/* text */
+.music-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.music-info p {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin: 0;
+}
+
+/* tombol */
+#playPause {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.music-cover.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}

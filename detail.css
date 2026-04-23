@@ -1,0 +1,716 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+  .judul {
+    display: flex;              /* ✅ Flexbox untuk align */
+    align-items: center;        /* ✅ Vertical center */
+    gap: 8px;                   /* ✅ Space antar logo & text */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    gap: 13px;
+}
+
+.logo {
+    width: 33px;                /* ✅ Fixed size */
+    height: 33px;
+    object-fit: contain;        /* ✅ Perfect image fit */
+    flex-shrink: 0;             /* ✅ Jangan mengecil */
+}
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffd700;
+        }
+
+        /* Arrow styling */
+        .dropdown-arrow {
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            width: 12px;
+            height: 12px;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(-135deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            color: #333;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                gap: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                box-shadow: none;
+                background-color: #444;
+            }
+
+            .nav-item:hover .dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+        }
+
+body {
+    font-family: 'Lora', serif;  /* Changed from Arial */
+    background-color: #f4f4f4;
+}
+
+/* Specifically for nav links */
+.nav-link, .dropdown-link {
+    font-family: 'Lora', serif;
+    font-weight: 500;  /* Optional: makes it slightly bolder */
+}
+
+/* ================= GLOBAL FIXED BACKGROUND ================= */
+.global-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    z-index: -2;  /* Paling belakang */
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+    position: relative;
+    z-index: 1;
+    min-height: 200vh;  /* Tinggi content */
+    background: transparent;
+}
+
+/* ================= BACKGROUND SECTION (Overlay) ================= */
+.fixed-background-section {
+        background-image: url("blue background.jpeg");
+        background-repeat: no-repeat;
+         background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+
+}
+
+/* ================= SEWA TEXT GLOW ================= */
+.sewa-text {
+    text-align: center;
+    padding: 55px 20px 10px;
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-weight: 900;
+    text-shadow: none;
+    animation: sewa-glow 4s ease-in-out infinite;
+}
+
+@keyframes sewa-glow {
+    0%, 30% { text-shadow: none; transform: scale(1); }
+    50%, 70% { 
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;
+        transform: scale(1.08);
+    }
+    100% { text-shadow: none; transform: scale(1); }
+}
+
+/* Body fix */
+body {
+    font-family: 'Lora', serif;
+    margin: 0;
+    overflow-x: hidden;  /* No horizontal scroll */
+}
+
+.background {
+    background-image: url("blue box.jpeg");
+    margin: 0 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.text-box {
+    max-width: 560px;
+}
+
+.text-box h3 {
+    color: #e74c3c;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* ================= BASKET FIXES ================= */
+.basket{
+    padding:50px;
+}
+
+.basket-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+
+/* MEDIUM GLOW */
+.sewa img {
+box-shadow:
+0 0 8px #fff,
+0 0 15px #fff,
+0 0 20px #fff;
+}
+
+.sewa img:hover {
+box-shadow:
+0 0 12px #fff,
+0 0 20px #fff,
+0 0 30px #fff;
+}
+
+
+/* Remove floats completely */
+.basket-text,
+.text-box h3,
+.text-box h5 {
+    float: none !important;
+}
+
+.basket-c1 {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+     transition: transform 0.3s ease;
+}
+
+.basket-c1:hover {
+    transform: scale(1.1);
+}
+
+.basket-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.basket-text-content{
+    padding:30px;
+}
+
+.sepak-bola{
+    padding:50px;
+}
+
+.sb-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.sepak-bola-text,
+.text-box h3,
+.text-box h5 {
+    float: none !important;
+}
+
+.sepak-bola-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+     transition: transform 0.3s ease;
+}
+
+.sepak-bola-img:hover {
+    transform: scale(1.1);
+}
+
+
+.sepak-bola-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.sb-text-content{
+    padding:30px;
+}
+
+.kr-dewasa{
+    padding:50px;
+}
+
+.kr-dewasa-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.kr-dewasa-text,
+.text-box h3,
+.text-box h5 {
+    float: none !important;
+}
+
+.kr-dewasa-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+     transition: transform 0.3s ease;
+}
+
+.kr-dewasa-img:hover {
+    transform: scale(1.1);
+}
+
+.kr-dewasa-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.kr-dewasa-text-content{
+    padding:30px;
+}
+
+.kr-kecil{
+    padding:50px;
+}
+
+.kr-kecil-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.kr-kecil-text,
+.text-box h3,
+.text-box h5 {
+    float: none !important;
+}
+
+.kr-kecil-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;     
+    transition: transform 0.3s ease;
+}
+
+.kr-kecil-img:hover {
+    transform: scale(1.1);
+}
+
+.kr-kecil-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.kr-kecil-text-content{
+    padding:30px;
+}
+
+.voli{
+    padding:50px;
+}
+
+.voli-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.voli-text,
+.text-box h3,
+.text-box h4 {
+    float: none !important;
+}
+
+.voli-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;    transition: transform 0.3s ease;
+}
+
+.voli-img:hover {
+    transform: scale(1.1);
+}
+
+.voli-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.voli-text-content{
+    padding:30px;
+}
+
+.tenis-m{
+    padding:50px;
+}
+
+.tenis-m-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.tenis-m-text,
+.text-box h3,
+.text-box h4 {
+    float: none !important;
+}
+
+.tenis-m-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;   
+    transition: transform 0.3s ease;
+}
+
+.tenis-m-img:hover {
+    transform: scale(1.1);
+}
+
+.tenis-m-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.tenis-m-text-content{
+    padding:30px;
+}
+
+.tenis-l{
+    padding:50px;
+}
+
+.tenis-l-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.tenis-l-text,
+.text-box h3,
+.text-box h4 {
+    float: none !important;
+}
+
+.tenis-l-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+        transition: transform 0.3s ease;
+}
+
+.tenis-l-img:hover {
+    transform: scale(1.1);
+}
+
+.tenis-l-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.tenis-l-text-content{
+    padding:30px;
+}
+
+.badminton{
+    padding:50px;
+}
+
+.badminton-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.badminton-text,
+.text-box h3,
+.text-box h4 {
+    float: none !important;
+}
+
+.badminton-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+        transition: transform 0.3s ease;
+}
+
+.badminton-img:hover {
+    transform: scale(1.1);
+}
+
+.badminton-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.badminton-text-content{
+    padding:30px;
+}
+
+.padel {
+    padding:50px;
+}
+
+.padel-content-wrapper {
+    display: flex;
+    align-items: flex-start;  /* ✅ Top alignment */
+    gap: 40px;                /* ✅ Proper spacing */
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+/* Remove floats completely */
+.padel-text,
+.text-box h3,
+.text-box h4 {
+    float: none !important;
+}
+
+.padel-img {
+    width: 420px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;      /* ✅ Nice rounded corners */
+    flex-shrink: 0;
+        transition: transform 0.3s ease;
+}
+
+.padel-img:hover {
+    transform: scale(1.1);
+}
+
+.padel-text {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.padel-text-content{
+    padding:30px;
+}
+
+.music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    will-change: transform;
+    height: 60px;
+    width: 60px;
+    background: #111;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* expand saat hover */
+.music-widget:hover {
+    width: 265px;
+}
+
+/* gambar bulat */
+.music-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* bagian dalam */
+.music-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul saat hover */
+.music-widget:hover .music-expanded {
+    opacity: 1;
+}
+
+/* text */
+.music-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.music-info p {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin: 0;
+}
+
+
+#playPause {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.music-cover.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}

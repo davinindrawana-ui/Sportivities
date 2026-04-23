@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sportivities</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- ICON -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="index css.css">
+
+<link rel="icon" type="image/png" href="favicon.png"
+
+</head>
+
+<body>
+
+<!-- NAVBAR (TIDAK DIUBAH) -->
+<nav class="navbar">
+    <div class="nav-container">
+
+        <div class="judul">
+            <img class="logo"
+    src="favicon.png">
+
+        <div class="logo">Sportivities</div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    Services 
+                    <div class="dropdown-arrow"></div>
+                </a>
+                <div class="dropdown">
+                    <a href="menu.html" class="dropdown-link">Menu</a>
+                    <a href="detail.html" class="dropdown-link">Detail</a>
+                    <a href="gallery.html" class="dropdown-link">Gallery</a>
+                    <a href="owner.html" class="dropdown-link">Owner</a>
+                    <a href="payment.html" class="dropdown-link">Payment</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+   <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="judul">
+                <img class="logo" src="favicon.png">
+            Sportivities</div>
+            <ul class="nav-menu">
+                 <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Services 
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown">
+                        <a href="menu.html" class="dropdown-link">Menu</a>
+                        <a href="detail.html" class="dropdown-link">Detail</a>
+                        <a href="gallery.html" class="dropdown-link">Gallery</a>
+                        <a href="owner.html" class="dropdown-link">Owner</a>
+                        <a href="payment html.html" class="dropdown-link">Payment</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact html.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Mainkan Olahraga Favoritmu</h1>
+        <p>Sewa tempat olahraga terbaik sekarang!</p>
+        <a href="contact html.html" class="cta-button">
+            <i class="fas fa-play"></i> Mulai Booking
+        </a>
+    </div>
+    <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+</section>
+
+<!-- FOOTER (TIDAK DIUBAH) -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h2 class="logo">Sportivities</h2>
+            <p>We bring sports closer to you. Play anytime, anywhere.</p>
+
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>Useful Links</h3>
+            <a href="about.html">About</a>
+            <a href="detail.html">Detail</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact html.html">Contact</a>
+            <a href="payment html.html">Payment</a>
+            <a href="owner.html">Owner</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Our Services</h3>
+            <a href="menu.html">Futsal</a>
+            <a href="menu.html">Basket</a>
+            <a href="menu.html">Badminton</a>
+            <a href="menu.html">Swimming</a>
+            <a href="menu.html">Tennis</a>
+            <a href="menu.html">Padel</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contacts</h3>
+            <p>📅 Monday - Sunday</p>
+            <p>⏰ 06:00 - 22:00</p>
+            <p>📍 Tangerang, Indonesia</p>
+        </div>
+
+    </div>
+</footer>
+<div class="music-widget" id="musicWidget">
+    <img src="vinyl-306070_1280.png" class="music-cover" id="musicToggle">
+
+    <div class="music-expanded">
+        <div class="music-info">
+            <h4>Now Playing</h4>
+            <p>Chill Instrumental</p>
+        </div>
+        <button id="playPause">▶</button>
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playPause");
+const cover = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+        cover.classList.add("playing");
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+        cover.classList.remove("playing");
+    }
+    isPlaying = !isPlaying;
+}
+
+// klik cover atau tombol
+btn.addEventListener("click", toggleMusic);
+cover.addEventListener("click", toggleMusic);
+
+// volume biar halus
+music.volume = 0.3;
+</script>
+</body>
+</html>

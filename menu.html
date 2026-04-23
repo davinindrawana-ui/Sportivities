@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu Produk Olahraga</title>
+  <link rel="icon" type="image/png" href="image-removebg-preview.png">
+  <link rel="stylesheet" href="menu.css" />
+</head>
+
+
+<body>
+<nav class="navbar">
+        <div class="nav-container">
+
+            <div class="judul">
+                <img class="logo" src="./image-removebg-preview.png">
+            Sportivities</div>
+            <ul class="nav-menu">
+              <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Services 
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown">
+                        <a href="menu.html" class="dropdown-link">Menu</a>
+                        <a href="detail.html" class="dropdown-link">Detail</a>
+                        <a href="gallery.html" class="dropdown-link">Gallery</a>
+                        <a href="owner.html" class="dropdown-link">Owner</a>
+                        <a href="payment.html" class="dropdown-link">Payment</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact html.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">S</div>
+      <div>
+        <h1>Sport Product Menu</h1>
+        <p>Premium Sports Collection</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Cari produk, merek, kategori..." />
+        <span>⌕</span>
+      </div>
+      <button class="ghost-btn" id="resetAllBtn">Reset Semua</button>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="left-side">
+      <div class="section-card hero-card">
+        <div class="hero-text">
+          <span class="small-badge">SPORTS STORE</span>
+          <h2 id="sportTitle">Basket</h2>
+          <p id="sportSubtitle">Pilih kategori untuk melihat produk detail dengan harga dan gambar.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-box">
+            <strong id="categoryCount">5</strong>
+            <span>Kategori</span>
+          </div>
+          <div class="stat-box">
+            <strong id="productCount">50</strong>
+            <span>Produk</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-head">
+          <h3>Cabang Olahraga</h3>
+          <span class="soft-pill" id="activeSportName">Basket</span>
+        </div>
+        <div class="sport-tabs" id="sportTabs"></div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-head">
+          <h3>Kategori Produk</h3>
+          <span class="soft-pill" id="currentCategoryInfo">Pilih kategori</span>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <aside class="right-side">
+      <div class="section-card sticky-card">
+        <div class="detail-header">
+          <div>
+            <h3 id="detailTitle">Pilih kategori produk</h3>
+            <p id="detailSubtitle">Semua produk detail akan muncul di sini.</p>
+          </div>
+          <button class="ghost-btn" id="closeBtn">Reset</button>
+        </div>
+
+        <div class="product-toolbar">
+          <div class="toolbar-pill" id="detailCounter">0 produk</div>
+          <div class="toolbar-pill">Preview Premium</div>
+        </div>
+
+
+        <div class="product-list" id="productList">
+          <div class="empty-state">
+            <div class="empty-icon">✨</div>
+            <h4>Belum ada kategori dipilih</h4>
+            <p>Klik salah satu kategori di sebelah kiri untuk menampilkan produk.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+<div class="music-widget" id="musicWidget">
+    <img src="vinyl-306070_1280.png" class="music-cover" id="musicToggle">
+
+    <div class="music-expanded">
+        <div class="music-info">
+            <h4>Now Playing</h4>
+            <p>Chill Instrumental</p>
+        </div>
+        <button id="playPause">▶</button>
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playPause");
+const cover = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+        cover.classList.add("playing");
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+        cover.classList.remove("playing");
+    }
+    isPlaying = !isPlaying;
+}
+
+// klik cover atau tombol
+btn.addEventListener("click", toggleMusic);
+cover.addEventListener("click", toggleMusic);
+
+// volume biar halus
+music.volume = 0.3;
+</script>
+  <script>
+    const rupiah = (num) => "Rp " + num.toLocaleString("id-ID");
+
+    function createProducts(names, brand, startPrice, imageQuery, desc, images = []) {
+  return names.map((name, index) => ({
+    name,
+    brand,
+    price: rupiah(startPrice + (index * 70000)),
+    image: images[index] || "gambar/default.png",
+    desc
+  }));
+}
+
+    const data = {
+  basket: {
+    title: "Basket",
+    subtitle: "Produk basket premium dengan desain modern dan detail lengkap.",
+    categories: [
+      {
+        name: "Sepatu Basket",
+        icon: "👟",
+        desc: "Model sepatu basket premium dengan grip, cushioning, dan stabilitas maksimal.",
+        products: createProducts(
+          [
+            "Nike LeBron Witness 8",
+            "Nike Giannis Immortality 3",
+            "Nike KD Trey 5 X",
+          ],
+          "Basket Shoes",
+          799000,
+          "basket shoes",
+          "Sepatu basket untuk grip, cushioning, dan stabilitas maksimal.",
+          [
+            "gambar/basket/lebron.jpg",
+            "gambar/basket/nike-giann.webp",
+            "gambar/basket/nike-kd.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Bola Basket",
+        icon: "🏀",
+        desc: "Bola basket untuk latihan dan pertandingan.",
+        products: createProducts(
+          [
+            "Molten B7G2000",
+            "Molten B7G3800",
+            "Molten BG4500",
+          ],
+          "Basket Ball",
+          249000,
+          "basket ball",
+          "Bola basket dengan grip baik dan pantulan stabil.",
+          [
+            "gambar/basket/molten-b7g-2.jpg",
+            "gambar/basket/molten-b7g-3.jpg",
+            "gambar/basket/molten-bg-4.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Topi Basket",
+        icon: "🧢",
+        desc: "Topi basket untuk gaya sporty modern.",
+        products: createProducts(
+          [
+            "Nike Club Basketball Cap",
+            "Nike Dri-FIT Hoops Cap",
+          ],
+          "Basket Cap",
+          199000,
+          "basket cap",
+          "Topi basket ringan dan stylish.",
+          [
+            "gambar/basket/nike-club-basket.avif",
+            "gambar/basket/nike-dri-fit-hoops.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Aksesoris Basket",
+        icon: "🎒",
+        desc: "Aksesoris tambahan untuk menunjang performa basket.",
+        products: createProducts(
+          [
+            "Nike Elite Backpack",
+            "Nike Arm Sleeve",
+            "Jordan Wrist Band",
+          ],
+          "Basket Gear",
+          149000,
+          "basket accessories",
+          "Aksesoris basket untuk latihan dan pertandingan.",
+          [
+            "gambar/basket/nike-elite-back.avif",
+            "gambar/basket/nike-arm-sle.jpg",
+            "gambar/basket/jordan-wrist.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kaos Kaki Basket",
+        icon: "🧦",
+        desc: "Kaos kaki basket empuk dan nyaman.",
+        products: createProducts(
+          [
+            "Nike Elite Crew Socks",
+            "Nike Everyday Plus Cushioned",
+          ],
+          "Basket Socks",
+          89000,
+          "basket socks",
+          "Kaos kaki basket dengan cushion nyaman.",
+          [
+            "gambar/basket/nike-elite-crew-sock.png",
+            "gambar/basket/nike-everyday-plus-cush.avif",
+          ]
+        ),
+      },
+    ],
+  },
+
+  tennis: {
+    title: "Tennis",
+    subtitle: "Produk tennis dengan tampilan profesional dan premium.",
+    categories: [
+      {
+        name: "Sepatu Tennis",
+        icon: "👟",
+        desc: "Sepatu tennis dengan support lateral kuat.",
+        products: createProducts(
+          [
+            "NikeCourt Vapor Lite 2",
+            "NikeCourt Air Zoom Vapor Pro",
+            "Adidas Barricade",
+          ],
+          "Tennis Shoes",
+          999000,
+          "tennis shoes",
+          "Sepatu untuk stabilitas dan pergerakan cepat.",
+          [
+            "gambar/basket/nike-court-vapor-lite-2.webp",
+            "gambar/basket/nikecourt-airzoom-vapor-pro.jpg",
+            "gambar/basket/adidas-barricade.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Bola Tennis",
+        icon: "🎾",
+        desc: "Bola tennis original untuk latihan dan pertandingan.",
+        products: createProducts(
+          [
+            "Wilson US Open",
+            "Wilson Championship Extra Duty",
+            "Dunlop ATP Championship",
+          ],
+          "Tennis Ball",
+          99000,
+          "tennis ball",
+          "Pantulan stabil dan tahan lama.",
+          [
+            "gambar/basket/wilson-us-open.jpg",
+            "gambar/basket/wilson-championship-ex.jpg",
+            "gambar/basket/dunlop-atp-championship.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Raket Tennis",
+        icon: "🎾",
+        desc: "Raket tennis untuk kontrol dan power.",
+        products: createProducts(
+          [
+            "Wilson Blade 100",
+            "Wilson Clash 100",
+            "Babolat Pure Drive",
+          ],
+          "Tennis Racket",
+          1299000,
+          "tennis racket",
+          "Kombinasi kontrol dan power terbaik.",
+          [
+            "gambar/basket/wilson-blade100.jpg",
+            "gambar/basket/wilson-clash100.jpg",
+            "gambar/basket/babolat-pure-drive.jpg",
+          ]
+        ),
+      },
+    ],
+  },
+
+  "tennis-meja": {
+    title: "Tennis Meja",
+    subtitle: "Produk indoor premium untuk tennis meja.",
+    categories: [
+      {
+        name: "Sepatu Tennis Meja",
+        icon: "👟",
+        desc: "Sepatu indoor untuk footwork cepat.",
+        products: createProducts(
+          [
+            "Butterfly Lezoline Rifones",
+            "Butterfly Lezoline Unizes",
+            "Mizuno Wave Medal 7",
+          ],
+          "Table Tennis Shoes",
+          699000,
+          "table tennis shoes",
+          "Grip stabil untuk indoor court.",
+          [
+            "gambar/basket/butterfly-lezoline-riff.jpg",
+            "gambar/basket/butterfly-lezoline-uni.jpg",
+            "gambar/basket/mizuno_wave_medal_7.jpeg",
+          ]
+        ),
+      },
+      {
+        name: "Bola Tennis Meja",
+        icon: "⚪",
+        desc: "Bola pingpong untuk latihan dan turnamen.",
+        products: createProducts(
+          [
+            "DHS D40+ 3 Star",
+            "DHS DJ40+ WTT",
+            "Nittaku Premium 40+",
+          ],
+          "Table Tennis Ball",
+          29000,
+          "table tennis ball",
+          "Bola berkualitas tinggi dan stabil.",
+          [
+            "gambar/basket/dhs-d40+.jpg",
+            "gambar/basket/dhs-dj40+.jpg",
+            "gambar/basket/nittaku-premium40+.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Raket Tennis Meja",
+        icon: "🏓",
+        desc: "Raket untuk kontrol dan spin.",
+        products: createProducts(
+          [
+            "Butterfly Timo Boll ALC",
+            "Butterfly Viscaria",
+            "Stiga Carbonado 45",
+          ],
+          "Table Tennis Racket",
+          299000,
+          "table tennis racket",
+          "Raket untuk speed dan spin tinggi.",
+          [
+            "gambar/basket/butterfly-timoboll-alc.jpg",
+            "gambar/basket/butterly-viscaria.jpg",
+            "gambar/basket/stiga-carbonado45.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kaos Kaki Sport",
+        icon: "🧦",
+        desc: "Kaos kaki sport nyaman untuk indoor.",
+        products: createProducts(
+          [
+            "Nike Everyday Cushioned",
+            "Nike Lightweight Ankle",
+            "Adidas Cushioned Socks",
+          ],
+          "Sport Socks",
+          59000,
+          "sport socks",
+          "Ringan, empuk, dan nyaman.",
+          [
+            "gambar/basket/nike-everyday-plus-cush.avif",
+            "gambar/basket/nike-everyday-lightweight-training-ankle.avif",
+            "gambar/basket/adidas-Cushioned_Crew_Socks.avif",
+          ]
+        ),
+      },
+    ],
+  },
+
+  "sepak-bola": {
+    title: "Sepak Bola",
+    subtitle: "Produk sepak bola modern untuk latihan dan pertandingan.",
+    categories: [
+      {
+        name: "Sepatu Bola",
+        icon: "👟",
+        desc: "Sepatu untuk speed dan kontrol.",
+        products: createProducts(
+          [
+            "Nike Mercurial Vapor 15",
+            "Nike Phantom GX 2 Academy",
+            "Nike Tiempo Legend 10",
+          ],
+          "Football Shoes",
+          899000,
+          "football boots",
+          "Ringan, cepat, dan presisi.",
+          [
+            "gambar/basket/nike-mercurial-vapor15.avif",
+            "gambar/basket/phantom-gx2.webp",
+            "gambar/basket/nike-tiempo-legend10.avif",
+          ]
+        ),
+      },
+      {
+        name: "Bola Sepak",
+        icon: "⚽",
+        desc: "Bola sepak original untuk latihan dan pertandingan.",
+        products: createProducts(
+          [
+            "Adidas UCL Competition",
+            "Adidas Al Rihla Club",
+            "Nike Flight Ball",
+          ],
+          "Football Ball",
+          199000,
+          "football ball",
+          "Akurasi dan kontrol tinggi.",
+          [
+            "gambar/basket/adidas-ucl-compete.webp",
+            "gambar/basket/adidas-alrihla-club.jpg",
+            "gambar/basket/nike-flight-ball.webp",
+          ]
+        ),
+      },
+    ],
+  },
+
+  berenang: {
+    title: "Berenang",
+    subtitle: "Produk berenang premium untuk latihan dan rekreasi.",
+    categories: [
+      {
+        name: "Topi Renang",
+        icon: "🧢",
+        desc: "Topi renang nyaman dan fleksibel.",
+        products: createProducts(
+          [
+            "Speedo Plain Moulded Cap",
+            "Speedo Silicone Long Hair Cap",
+            "Arena Classic Silicone Cap",
+          ],
+          "Swim Cap",
+          59000,
+          "swim cap",
+          "Nyaman untuk latihan dan lomba.",
+          [
+            "gambar/basket/speedo-plain-molded.jpg",
+            "gambar/basket/speedo-longhari.jpg",
+            "gambar/basket/arena-silicone.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kacamata Renang",
+        icon: "🥽",
+        desc: "Visibilitas tinggi dan anti kabut.",
+        products: createProducts(
+          [
+            "Speedo Biofuse 2.0",
+            "Speedo Fastskin Hyper Elite",
+            "Arena Cobra Ultra Swipe",
+          ],
+          "Swim Goggles",
+          99000,
+          "swimming goggles",
+          "Nyaman dan anti bocor.",
+          [
+            "gambar/basket/speedo-biofuse.jpg",
+            "gambar/basket/speedo-fastskin-hyper-elite.jpg",
+            "gambar/basket/arena-cobra.jpg",
+          ]
+        ),
+      },
+    ],
+  },
+
+  voli: {
+    title: "Voli",
+    subtitle: "Produk voli premium dengan tampilan modern.",
+    categories: [
+      {
+        name: "Sepatu Voli",
+        icon: "👟",
+        desc: "Untuk jump dan landing stabil.",
+        products: createProducts(
+          [
+            "Asics Sky Elite FF 2",
+            "Asics Netburner Ballistic",
+            "Mizuno Wave Lightning Z8",
+          ],
+          "Volleyball Shoes",
+          999000,
+          "volleyball shoes",
+          "Stabil dan ringan.",
+          [
+            "gambar/basket/asics-ff2.jpg",
+            "gambar/basket/asics-netbuyrner.jpg",
+            "gambar/basket/mizuno-wave-lightingoing-z8.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Bola Voli",
+        icon: "🏐",
+        desc: "Bola voli untuk latihan dan tanding.",
+        products: createProducts(
+          [
+            "Mikasa V200W",
+            "Mikasa V300W",
+            "Molten V5M5000",
+          ],
+          "Volleyball",
+          179000,
+          "volleyball",
+          "Grip dan kontrol bagus.",
+          [
+            "gambar/basket/mikasa-v200.jpg",
+            "gambar/basket/mikasa-v300w.jpg",
+            "gambar/basket/molten-v5m5000.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kaos Kaki Voli",
+        icon: "🧦",
+        desc: "Nyaman untuk indoor.",
+        products: createProducts(
+          [
+            "Mizuno Crew Socks",
+            "Mizuno Mid Socks",
+            "Asics Cushion Socks",
+          ],
+          "Volleyball Socks",
+          59000,
+          "volleyball socks",
+          "Empuk dan breathable.",
+          [
+            "gambar/basket/mizunocrewsocks.jpg",
+            "gambar/basket/mizunomidsocks.jpg",
+            "gambar/basket/asicscushionsocks.jpg",
+          ]
+        ),
+      },
+    ],
+  },
+
+  padel: {
+    title: "Padel",
+    subtitle: "Produk padel mewah dengan tampilan premium.",
+    categories: [
+      {
+        name: "Sepatu Padel",
+        icon: "👟",
+        desc: "Stabil untuk movement cepat.",
+        products: createProducts(
+          [
+            "Adidas CourtJam Padel",
+            "Adidas SoleMatch Control",
+            "Babolat Jet Premura 2",
+          ],
+          "Padel Shoes",
+          999000,
+          "padel shoes",
+          "Grip kuat dan stabil.",
+          [
+            "gambar/basket/adidascourtjam.jpg",
+            "gambar/basket/adidassolematch.jpg",
+            "gambar/basket/babolatjet.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Bola Padel",
+        icon: "🎾",
+        desc: "Bola padel dengan bounce stabil.",
+        products: createProducts(
+          [
+            "Head Padel Pro S",
+            "Head Padel Team",
+            "Bullpadel Premium Pro",
+          ],
+          "Padel Ball",
+          109000,
+          "padel ball",
+          "Kualitas turnamen.",
+          [
+            "gambar/basket/headpadelpros.jpg",
+            "gambar/basket/headpadelteam.jpg",
+            "gambar/basket/bullpadelpremiumpro.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Raket Padel",
+        icon: "🏓",
+        desc: "Power dan kontrol tinggi.",
+        products: createProducts(
+          [
+            "Bullpadel Vertex 04",
+            "Bullpadel Hack 03",
+            "Adidas Metalbone 3.3",
+          ],
+          "Padel Racket",
+          1299000,
+          "padel racket",
+          "Untuk advanced player.",
+          [
+            "gambar/basket/bullpadelvertex.webp",
+            "gambar/basket/bullpadelhack3.jpg",
+            "gambar/basket/adidasmetalbone.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kaos Kaki Padel",
+        icon: "🧦",
+        desc: "Comfort dan ringan.",
+        products: createProducts(
+          [
+            "Bullpadel Crew Socks",
+            "Bullpadel Invisible Socks",
+            "Babolat Performance Socks",
+          ],
+          "Padel Socks",
+          69000,
+          "padel socks",
+          "Support maksimal.",
+          [
+            "gambar/basket/bullpadelcrewsocks.jpg",
+            "gambar/basket/bullpadelinvisiblesocsk.jpg",
+            "gambar/basket/babolatperformance.jpg",
+          ]
+        ),
+      },
+    ],
+  },
+
+  badminton: {
+    title: "Badminton",
+    subtitle: "Produk badminton profesional dengan desain premium.",
+    categories: [
+      {
+        name: "Sepatu Badminton",
+        icon: "👟",
+        desc: "Footwork cepat dan stabil.",
+        products: createProducts(
+          [
+            "Yonex SHB 65Z3",
+            "Yonex Aerus Z2",
+            "Li-Ning Saga Lite 3",
+          ],
+          "Badminton Shoes",
+          799000,
+          "badminton shoes",
+          "Grip dan stabilitas tinggi.",
+          [
+            "gambar/basket/yonex65z3.jpg",
+            "gambar/basket/yonexaerusz2.jpg",
+            "gambar/basket/liningsagalite3.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Shuttlecock",
+        icon: "🏸",
+        desc: "Untuk latihan dan pertandingan.",
+        products: createProducts(
+          [
+            "Yonex Aerosensa 10",
+            "Yonex Aerosensa 20",
+            "Yonex Aerosensa 30",
+          ],
+          "Shuttlecock",
+          99000,
+          "shuttlecock",
+          "Flight stabil.",
+          [
+            "gambar/basket/yonexaerosensa10.png",
+            "gambar/basket/yonex20.jpg",
+            "gambar/basket/yonex30.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Raket Badminton",
+        icon: "🎾",
+        desc: "Attack dan control.",
+        products: createProducts(
+          [
+            "Yonex Astrox 77 Pro",
+            "Yonex Astrox 88D Pro",
+            "Yonex Nanoflare 1000Z",
+          ],
+          "Badminton Racket",
+          899000,
+          "badminton racket",
+          "Power dan speed tinggi.",
+          [
+            "gambar/basket/yonexastrox77.jpg",
+            "gambar/basket/yonexastrox88dpro.jpg",
+            "gambar/basket/yonexnanoflare1kz.jpg",
+          ]
+        ),
+      },
+      {
+        name: "Kaos Kaki Badminton",
+        icon: "🧦",
+        desc: "Nyaman untuk latihan.",
+        products: createProducts(
+          [
+            "Yonex Crew Socks",
+            "Yonex Comfort Socks",
+            "Li-Ning Sport Socks",
+          ],
+          "Badminton Socks",
+          59000,
+          "badminton socks",
+          "Ringan dan empuk.",
+          [
+            "gambar/basket/yonexcrewsocks.jpg",
+            "gambar/basket/yonexcomfort.jpg",
+            "gambar/basket/liningbadmintonsocks.jpg",
+          ]
+        ),
+      },
+    ],
+  },
+};
+    const sportTabs = document.getElementById("sportTabs");
+    const sportTitle = document.getElementById("sportTitle");
+    const sportSubtitle = document.getElementById("sportSubtitle");
+    const categoryCount = document.getElementById("categoryCount");
+    const productCount = document.getElementById("productCount");
+    const activeSportName = document.getElementById("activeSportName");
+    const currentCategoryInfo = document.getElementById("currentCategoryInfo");
+    const categoryGrid = document.getElementById("categoryGrid");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailSubtitle = document.getElementById("detailSubtitle");
+    const detailCounter = document.getElementById("detailCounter");
+    const productList = document.getElementById("productList");
+    const closeBtn = document.getElementById("closeBtn");
+    const searchInput = document.getElementById("searchInput");
+    const resetAllBtn = document.getElementById("resetAllBtn");
+
+    let currentSport = "basket";
+    let currentCategory = null;
+
+    function getTotalProducts(sportKey) {
+      return data[sportKey].categories.reduce((total, cat) => total + cat.products.length, 0);
+    }
+
+    function renderTabs() {
+      sportTabs.innerHTML = "";
+      Object.keys(data).forEach((key) => {
+        const btn = document.createElement("button");
+        btn.className = "tab-btn" + (key === currentSport ? " active" : "");
+        btn.textContent = data[key].title;
+        btn.addEventListener("click", () => {
+          currentSport = key;
+          currentCategory = null;
+          renderTabs();
+          renderHeaderInfo();
+          renderCategories();
+          resetDetail();
+          animateFade(categoryGrid);
+        });
+        sportTabs.appendChild(btn);
+      });
+    }
+
+    function renderHeaderInfo() {
+      const sport = data[currentSport];
+      sportTitle.textContent = sport.title;
+      sportSubtitle.textContent = sport.subtitle;
+      categoryCount.textContent = sport.categories.length;
+      productCount.textContent = getTotalProducts(currentSport);
+      activeSportName.textContent = sport.title;
+    }
+
+    function renderCategories() {
+      const sport = data[currentSport];
+      categoryGrid.innerHTML = "";
+
+      sport.categories.forEach((category) => {
+        const card = document.createElement("div");
+        card.className = "category-card";
+        card.innerHTML = `
+          <div class="card-glow"></div>
+          <span class="category-icon">${category.icon}</span>
+          <h4>${category.name}</h4>
+          <p>${category.desc}</p>
+          <div class="card-bottom">
+            <span>${category.products.length} produk</span>
+            <span class="arrow">→</span>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          document.querySelectorAll(".category-card").forEach(el => el.classList.remove("active"));
+          card.classList.add("active");
+          currentCategory = category;
+          currentCategoryInfo.textContent = category.name;
+          renderProducts(category, searchInput.value.trim().toLowerCase());
+        });
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const rotateX = ((y - rect.height / 2) / rect.height) * -10;
+          const rotateY = ((x - rect.width / 2) / rect.width) * 10;
+          card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+
+        categoryGrid.appendChild(card);
+      });
+    }
+
+    function renderProducts(category, keyword = "") {
+      const filtered = category.products.filter(product =>
+        product.name.toLowerCase().includes(keyword) ||
+        product.brand.toLowerCase().includes(keyword) ||
+        category.name.toLowerCase().includes(keyword)
+      );
+
+      detailTitle.textContent = category.name;
+      detailSubtitle.textContent = filtered.length > 0
+        ? "Menampilkan produk detail lengkap dengan gambar dan harga."
+        : "Tidak ada produk yang cocok dengan pencarian.";
+      detailCounter.textContent = filtered.length + " produk";
+
+      productList.innerHTML = "";
+
+      if (filtered.length === 0) {
+        productList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <h4>Produk tidak ditemukan</h4>
+            <p>Coba kata kunci lain.</p>
+          </div>
+        `;
+        return;
+      }
+
+       filtered.forEach((product, index) => {
+  const item = document.createElement("div");
+  item.className = "product-card";
+  item.innerHTML = `
+    <div class="product-image">
+      <img 
+        src="${product.image}" 
+        alt="${product.name}"
+        onerror="this.src='gambar/default.png'"
+      >
+    </div>
+    <div class="product-info">
+      <span class="brand-tag">${product.brand}</span>
+      <h4>${product.name}</h4>
+      <div class="price">${product.price}</div>
+      <p>${product.desc}</p>
+    </div>
+  `;
+  productList.appendChild(item);
+
+  setTimeout(() => {
+    item.classList.add("show");
+  }, index * 60);
+});
+    }
+
+    function resetDetail() {
+      currentCategoryInfo.textContent = "Pilih kategori";
+      detailTitle.textContent = "Pilih kategori produk";
+      detailSubtitle.textContent = "Semua produk detail akan muncul di sini.";
+      detailCounter.textContent = "0 produk";
+      productList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">✨</div>
+          <h4>Belum ada kategori dipilih</h4>
+          <p>Klik salah satu kategori di sebelah kiri untuk menampilkan produk.</p>
+        </div>
+      `;
+    }
+
+    function createProducts(names, brand, startPrice, imageQuery, desc, images = []) {
+  return names.map((name, index) => ({
+    name,
+    brand,
+    price: rupiah(startPrice + (index * 70000)),
+    image: images[index] || "LebronW8",
+    desc
+  }));
+}
+
+    function animateFade(element) {
+      element.animate(
+        [
+          { opacity: 0, transform: "translateY(14px)" },
+          { opacity: 1, transform: "translateY(0)" }
+        ],
+        { duration: 450, easing: "cubic-bezier(.2,.8,.2,1)" }
+      );
+    }
+
+    closeBtn.addEventListener("click", () => {
+      currentCategory = null;
+      document.querySelectorAll(".category-card").forEach(el => el.classList.remove("active"));
+      resetDetail();
+    });
+
+    resetAllBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      currentSport = "basket";
+      currentCategory = null;
+      renderTabs();
+      renderHeaderInfo();
+      renderCategories();
+      resetDetail();
+    });
+
+    searchInput.addEventListener("input", () => {
+      if (currentCategory) {
+        renderProducts(currentCategory, searchInput.value.trim().toLowerCase());
+      }
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      document.querySelector(".orb-1").style.transform = `translate(${x * 30}px, ${y * 18}px)`;
+      document.querySelector(".orb-2").style.transform = `translate(${-x * 26}px, ${y * 24}px)`;
+      document.querySelector(".orb-3").style.transform = `translate(${x * 15}px, ${-y * 20}px)`;
+    });
+
+    renderTabs();
+    renderHeaderInfo();
+    renderCategories();
+    resetDetail();
+  </script>
+  
+</body>
+</html>

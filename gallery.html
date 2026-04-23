@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sportivities</title>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+ font-family: 'Lora', serif;  /* Changed from Arial */
+text-decoration:none;
+list-style:none;
+}
+
+body {
+    font-family: 'Lora', serif;  /* Changed from Arial */
+    background-color: #f4f4f4;
+}
+
+/* Specifically for nav links */
+.nav-link, .dropdown-link {
+    font-family: 'Lora', serif;
+    font-weight: 500;  /* Optional: makes it slightly bolder */
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+overflow-x:hidden;
+}
+
+
+
+.logo{
+font-size:32px;
+font-weight:700;
+color:#38bdf8;
+}
+
+
+/* HERO */
+main{
+padding:40px 20px;
+}
+
+.title{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin-bottom:40px;
+}
+
+.title h1{
+font-size:50px;
+}
+
+.title i{
+font-size:55px;
+color:#38bdf8;
+}
+
+/* SWIPER */
+.swiper{
+width:100%;
+padding-top:20px;
+padding-bottom:60px;
+}
+
+.swiper-slide{
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+width:320px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:.4s;
+}
+
+.swiper-slide:hover{
+transform:translateY(-10px);
+}
+
+.swiper-slide img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+text-align:center;
+}
+
+.card-content h2{
+margin-bottom:10px;
+font-size:28px;
+}
+
+.card-content p{
+font-size:16px;
+color:#cbd5e1;
+}
+
+/* SOCIAL */
+.networks{
+margin-top:40px;
+text-align:center;
+}
+
+.networks i{
+font-size:35px;
+margin:0 10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.networks i:hover{
+color:#38bdf8;
+transform:scale(1.2);
+}
+
+        .navbar {
+            background-color: #333;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffd700;
+        }
+
+        /* Arrow styling */
+        .dropdown-arrow {
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            width: 12px;
+            height: 12px;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(-135deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            color: #333;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                gap: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                box-shadow: none;
+                background-color: #444;
+            }
+
+            .nav-item:hover .dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+        }
+
+.judul {
+    display: flex;              /* ✅ Flexbox untuk align */
+    align-items: center;        /* ✅ Vertical center */
+    gap: 8px;                   /* ✅ Space antar logo & text */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    gap: 13px;
+}
+
+.logo {
+    width: 33px;                /* ✅ Fixed size */
+    height: 33px;
+    object-fit: contain;        /* ✅ Perfect image fit */
+    flex-shrink: 0;             /* ✅ Jangan mengecil */
+}
+
+</style>
+
+</head>
+<body id="bg-body">
+
+<nav class="navbar">
+        <div class="nav-container">
+
+            <div class="judul">
+                <img class="logo" src="favicon.png">
+            Sportivities</div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                    <a href="#" class="nav-link">
+                        Services 
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown">
+                        <a href="menu.html" class="dropdown-link">Menu</a>
+                        <a href="detail.html" class="dropdown-link">Detail</a>
+                        <a href="gallery.html" class="dropdown-link">Gallery</a>
+                        <a href="owner.html" class="dropdown-link">Owner</a>
+                        <a href="payment.html" class="dropdown-link">Payment</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact html.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<main>
+
+<div class="title">
+<h1>Gallery</h1>
+<i class='bx bx-dumbbell'></i>
+</div>
+
+<!-- SWIPER -->
+<div class="swiper mySwiper">
+<div class="swiper-wrapper">
+
+<!-- FOOTBALL -->
+<div class="swiper-slide">
+<img src="sepakbola.jpg">
+<div class="card-content">
+<h2>Football</h2>
+</div>
+</div>
+
+<!-- BASKETBALL -->
+<div class="swiper-slide">
+<img src="basket.jpg">
+<div class="card-content">
+<h2>Basketball</h2>
+</div>
+</div>
+
+<!-- VOLLEYBALL -->
+<div class="swiper-slide">
+<img src="volleyball.avif">
+<div class="card-content">
+<h2>Volleyball</h2>
+</div>
+</div>
+
+<!-- TENNIS -->
+<div class="swiper-slide">
+<img src="tennis.jpg">
+<div class="card-content">
+<h2>Tennis</h2>
+</div>
+</div>
+
+<!-- SWIMMING -->
+<div class="swiper-slide">
+<img src="swim.jpg">
+<div class="card-content">
+<h2>Swimming</h2>
+</div>
+</div>
+
+<!-- BADMINTON -->
+<div class="swiper-slide">
+<img src="badminton.webp">
+<div class="card-content">
+<h2>Badminton</h2>
+</div>
+</div>
+
+<!-- TENNIS MEJA -->
+<div class="swiper-slide">
+<img src="tenismeja.jpg">
+<div class="card-content">
+<h2>Table Tennis</h2>
+</div>
+</div>
+
+<!-- PADEL -->
+<div class="swiper-slide">
+<img src="padel.jpg">
+<div class="card-content">
+<h2>Padel</h2>
+</div>
+</div>
+
+</div>
+
+<div class="swiper-pagination"></div>
+
+</div>
+
+<div class="networks">
+<i class='bx bxl-instagram'></i>
+<i class='bx bxl-youtube'></i>
+<i class='bx bxl-tiktok'></i>
+<i class='bx bxl-facebook'></i>
+</div>
+
+<div class="music-widget" id="musicWidget">
+    <img src="vinyl-306070_1280.png" class="music-cover" id="musicToggle">
+
+    <div class="music-expanded">
+        <div class="music-info">
+            <h4>Now Playing</h4>
+            <p>Chill Instrumental</p>
+        </div>
+        <button id="playPause">▶</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 Sportivities. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</main>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playPause");
+const cover = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+        cover.classList.add("playing");
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+        cover.classList.remove("playing");
+    }
+    isPlaying = !isPlaying;
+}
+
+// klik cover atau tombol
+btn.addEventListener("click", toggleMusic);
+cover.addEventListener("click", toggleMusic);
+
+// volume biar halus
+music.volume = 0.3;
+</script>
+<script>
+
+var swiper = new Swiper(".mySwiper", {
+    effect: "coverflow",
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 120,
+        modifier: 2.5,
+        slideShadows: false,
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+
+    on: {
+        slideChange: function () {
+            updateBackground();
+        }
+    }
+});
+
+function updateBackground() {
+    let activeSlide = document.querySelector(".swiper-slide-active img");
+    let bgBody = document.getElementById("bg-body");
+
+    if (activeSlide) {
+        let imgSrc = activeSlide.getAttribute("src");
+
+        bgBody.style.background = `
+            linear-gradient(rgba(15,23,42,0.7), rgba(30,41,59,0.7)),
+            url(${imgSrc}) center/cover no-repeat
+        `;
+    }
+}
+
+// Run once on load
+updateBackground();
+
+</script>
+
+</body>
+</html>

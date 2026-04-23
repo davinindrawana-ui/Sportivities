@@ -1,0 +1,314 @@
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+text-decoration:none;
+list-style:none;
+}
+
+        /* Navbar Styles */
+
+
+/* BODY */
+body{
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+overflow-x:hidden;
+}
+
+
+
+body {
+    font-family: 'Lora', serif;  /* Changed from Arial */
+    background-color: #f4f4f4;
+}
+
+/* Specifically for nav links */
+.nav-link, .dropdown-link {
+    font-family: 'Lora', serif;
+    font-weight: 500;  /* Optional: makes it slightly bolder */
+}
+
+.logo{
+font-size:32px;
+font-weight:700;
+color:#38bdf8;
+letter-spacing:1px;
+}
+
+body {
+    transition: background 0.8s ease;
+}
+
+/* MAIN */
+main{
+padding:40px 20px;
+}
+
+/* TITLE */
+.title{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin-bottom:40px;
+}
+
+.title h1{
+font-size:50px;
+font-weight:700;
+}
+
+.title i{
+font-size:55px;
+color:#38bdf8;
+}
+
+/* SWIPER */
+.swiper{
+width:100%;
+padding-top:20px;
+padding-bottom:60px;
+}
+
+.swiper-slide{
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+width:320px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+transition:0.4s;
+}
+
+.swiper-slide:hover{
+transform:translateY(-10px);
+}
+
+.swiper-slide img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+/* CARD CONTENT */
+.card-content{
+padding:20px;
+text-align:center;
+}
+
+.card-content h2{
+font-size:28px;
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+.card-content p{
+font-size:16px;
+line-height:1.5;
+color:#cbd5e1;
+}
+
+/* PAGINATION */
+.swiper-pagination-bullet{
+background:white;
+opacity:0.6;
+}
+
+.swiper-pagination-bullet-active{
+background:#38bdf8;
+opacity:1;
+}
+
+/* SOCIAL MEDIA */
+.networks{
+margin-top:40px;
+text-align:center;
+}
+
+.networks i{
+font-size:35px;
+margin:0 12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.networks i:hover{
+color:#38bdf8;
+transform:scale(1.2);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+header{
+padding:20px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.title h1{
+font-size:34px;
+text-align:center;
+}
+
+.title i{
+font-size:40px;
+}
+
+.swiper-slide{
+width:270px;
+}
+
+.swiper-slide img{
+height:220px;
+}
+
+.card-content h2{
+font-size:22px;
+}
+
+.card-content p{
+font-size:14px;
+}
+
+/* TAMBAHAN AGAR CARD TENNIS MEJA & PADEL KONSISTEN */
+
+/* Semua gambar card tetap sama ukuran */
+.swiper-slide img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:0;
+}
+
+/* Judul olahraga */
+.card-content h2{
+font-size:28px;
+margin-bottom:10px;
+color:#38bdf8;
+font-weight:700;
+}
+
+/* Deskripsi */
+.card-content p{
+font-size:16px;
+line-height:1.5;
+color:#cbd5e1;
+padding:0 8px;
+}
+
+/* Hover card */
+.swiper-slide:hover{
+transform:translateY(-10px) scale(1.02);
+transition:0.4s;
+}
+
+/* Responsive mobile */
+@media(max-width:768px){
+
+.swiper-slide img{
+height:220px;
+}
+
+.card-content h2{
+font-size:22px;
+}
+
+.card-content p{
+font-size:14px;
+}
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    will-change: transform;
+    height: 60px;
+    width: 60px;
+    background: #111;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* expand saat hover */
+.music-widget:hover {
+    width: 265px;
+}
+
+/* gambar bulat */
+.music-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* bagian dalam */
+.music-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul saat hover */
+.music-widget:hover .music-expanded {
+    opacity: 1;
+}
+
+/* text */
+.music-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.music-info p {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin: 0;
+}
+
+/* tombol */
+#playPause {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.music-cover.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+}
+
+}
+
