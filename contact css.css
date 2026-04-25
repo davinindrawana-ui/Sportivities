@@ -379,3 +379,82 @@ body {
     margin-bottom: 0
 }
 
+.music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    will-change: transform;
+    height: 60px;
+    width: 60px;
+    background: #111;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* expand saat hover */
+.music-widget:hover {
+    width: 265px;
+}
+
+/* gambar bulat */
+.music-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* bagian dalam */
+.music-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul saat hover */
+.music-widget:hover .music-expanded {
+    opacity: 1;
+}
+
+/* text */
+.music-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.music-info p {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin: 0;
+}
+
+/* tombol */
+#playPause {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.music-cover.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}

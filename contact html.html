@@ -205,6 +205,48 @@
             </div>
         </div>
     </footer>
+    <div class="music-widget" id="musicWidget">
+    <img src="vinyl-306070_1280.png" class="music-cover" id="musicToggle">
+
+    <div class="music-expanded">
+        <div class="music-info">
+            <h4>Now Playing</h4>
+            <p>Chill Instrumental</p>
+        </div>
+        <button id="playPause">▶</button>
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="./0425 (1).MP3" type="audio/mpeg">
+</audio>
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playPause");
+const cover = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+        cover.classList.add("playing");
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+        cover.classList.remove("playing");
+    }
+    isPlaying = !isPlaying;
+}
+
+// klik cover atau tombol
+btn.addEventListener("click", toggleMusic);
+cover.addEventListener("click", toggleMusic);
+
+// volume biar halus
+music.volume = 0.3;
+</script>
 
     <script>
         // Mobile menu toggle

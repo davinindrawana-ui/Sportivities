@@ -1,0 +1,392 @@
+
+.judul {
+    display: flex;              
+    align-items: center;      
+    gap: 8px;                  
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    gap: 13px;
+}
+
+.logo {
+    width: 33px;                
+    height: 33px;
+    object-fit: contain;       
+    flex-shrink: 0;             
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Lora', Arial, sans-serif;
+    color: white;
+    background: url("background.jpg") no-repeat center center/cover;
+    min-height: 100vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed; /* Biar nempel di atas */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    background: linear-gradient(to right, #4b0000, #1e3c72);
+    padding: 12px 0;
+}
+
+.navbar {
+    backdrop-filter: blur(8px);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffd700;
+}
+
+/* ARROW */
+.dropdown-arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .dropdown-arrow {
+    transform: rotate(-135deg);
+}
+
+/* DROPDOWN */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.nav-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    color: #333;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-link:hover {
+    background-color: #f1f1f1;
+}
+
+/* ================= CONTENT ================= */
+.container {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.container h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.desc {
+    margin-bottom: 60px;
+}
+
+/* ================= GALLERY ================= */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    justify-items: center;
+    perspective: 1200px;
+}
+
+/* CARD */
+.card {
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+/* FRAME */
+.frame {
+    width: 260px;
+    height: 260px;
+    border-radius: 25px;
+    padding: 8px;
+    background: linear-gradient(145deg, #e0e0e0, #a8a8a8);
+    box-shadow: 0 0 20px rgba(192,192,192,0.5);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+/* IMAGE */
+.imgBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.logo img {
+    height: 40px;
+    width: auto;
+}
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #000;
+    font-size: clamp(12px, 1.2vw, 18px);
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+
+    background: rgba(255,255,255,0.6);
+    opacity: 0;
+    transition: 0.4s;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+/* HOVER FOTO */
+.card:hover .imgBox {
+    transform: rotateY(180deg) scale(1.05);
+    filter: brightness(0.5);
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+/* AKTIF SAAT HOVER */
+.gallery:has(.card:hover) .card {
+    opacity: 0.7;
+}
+
+.gallery:has(.card:hover) .card:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 10;
+}
+
+/* ARAH DINAMIS */
+
+/* kiri */
+.gallery:has(.card:nth-child(3n+1):hover) .card:not(:hover) {
+    transform: scale(0.9) rotateY(-15deg);
+}
+
+/* tengah */
+.gallery:has(.card:nth-child(3n+2):hover) .card:nth-child(3n+1):not(:hover),
+.gallery:has(.card:nth-child(3n+2):hover) .card:nth-child(3n+2):not(:hover) {
+    transform: scale(0.9) rotateY(15deg);
+}
+
+.gallery:has(.card:nth-child(3n+2):hover) .card:nth-child(3n+3):not(:hover) {
+    transform: scale(0.9) rotateY(-15deg);
+}
+
+/* kanan */
+.gallery:has(.card:nth-child(3n+3):hover) .card:not(:hover) {
+    transform: scale(0.9) rotateY(15deg);
+}
+
+/* ================= FOOTER TEXT ================= */
+.footer-text {
+    margin-top: 60px;
+    text-align: center;
+
+    color: #f5f5dc;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,0.6),
+        0 0 10px rgba(255,255,255,0.5),
+        0 0 20px rgba(255,223,186,0.7);
+
+    animation: glow 2s infinite alternate;
+}
+
+/* GLOW */
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 5px rgba(255,255,255,0.4),
+            0 0 10px rgba(255,223,186,0.5);
+    }
+    to {
+        text-shadow:
+            0 0 10px rgba(255,255,255,0.8),
+            0 0 20px rgba(255,223,186,0.9),
+            0 0 30px rgba(255,223,186,1);
+    }
+}
+.frame {
+    width: 260px;
+    height: 260px;
+    border-radius: 25px;
+    padding: 8px;
+    background: linear-gradient(145deg, #e0e0e0, #a8a8a8);
+    box-shadow: 0 0 20px rgba(192,192,192,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* FIX PENTING */
+.gallery .imgBox {
+    width: 100%;
+    height: 100%;
+}
+
+/* FIX UTAMA FOTO */
+.gallery .imgBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ini penting banget */
+    border-radius: 20px;
+    display: block;
+}
+
+.music-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    will-change: transform;
+    height: 60px;
+    width: 60px;
+    background: #111;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* expand saat hover */
+.music-widget:hover {
+    width: 265px;
+}
+
+/* gambar bulat */
+.music-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* bagian dalam */
+.music-expanded {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    padding: 0 15px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* muncul saat hover */
+.music-widget:hover .music-expanded {
+    opacity: 1;
+}
+
+/* text */
+.music-info h4 {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.music-info p {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin: 0;
+}
+
+/* tombol */
+#playPause {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.music-cover.playing {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}

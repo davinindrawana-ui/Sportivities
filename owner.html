@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="owner.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+<nav>
+    <h2>Sportivities</h2>
+</nav>
+
+<section class="container">
+    <h1>Owner Of The Sportivities</h1>
+    <p class="desc">COME JOIN US</p>
+
+   <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="judul">
+                <img class="logo" src="favicon.png">
+            Sportivities</div>
+            <ul class="nav-menu">
+                 <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        Services 
+                        <div class="dropdown-arrow"></div>
+                    </a>
+                    <div class="dropdown">
+                        <a href="menu.html" class="dropdown-link">Menu</a>
+                        <a href="detail.html" class="dropdown-link">Detail</a>
+                        <a href="gallery.html" class="dropdown-link">Gallery</a>
+                        <a href="owner.html" class="dropdown-link">Owner</a>
+                        <a href="payment html.html" class="dropdown-link">Payment</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact html.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="gallery">
+
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="Joanne.jpg">
+                </div>
+                <div class="overlay">Joanne Chloe Suriaatmadja</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="Lauren.jpg">
+                </div>
+                <div class="overlay">Laurencia Theona Evangeline</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="selena.jpg">
+                </div>
+                <div class="overlay">Selena Emerald Pratama</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="arthur.jpg">
+                </div>
+                <div class="overlay">Arthur Benedictus Immanuel</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="kaelyn.jpg">
+                </div>
+                <div class="overlay">Kaelyn Fredelina</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="frame">
+                <div class="imgBox">
+                    <img src="davin.jpg">
+                </div>
+                <div class="overlay">Davin Indrawana</div>
+            </div>
+        </div>
+
+    </div>
+
+          <p class="footer-text">
+    Kami adalah orang orang yang membuat website ini <br>
+    dan mendesain tempat ini.
+</p> 
+</section>
+
+<div class="music-widget" id="musicWidget">
+    <img src="vinyl-306070_1280.png" class="music-cover" id="musicToggle">
+
+    <div class="music-expanded">
+        <div class="music-info">
+            <h4>Now Playing</h4>
+            <p>Chill Instrumental</p>
+        </div>
+        <button id="playPause">▶</button>
+    </div>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="./0425 (1).MP3" type="audio/mpeg">
+</audio>
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("playPause");
+const cover = document.getElementById("musicToggle");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        btn.textContent = "⏸";
+        cover.classList.add("playing");
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+        cover.classList.remove("playing");
+    }
+    isPlaying = !isPlaying;
+}
+
+
+btn.addEventListener("click", toggleMusic);
+cover.addEventListener("click", toggleMusic);
+
+
+music.volume = 0.3;
+</script>
+</body>
+</html>
