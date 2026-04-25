@@ -17,38 +17,37 @@
 
 <body>
     <nav class="navbar">
-        <div class="nav-container">
+  <div class="nav-container">
 
-            <div class="judul">
-                <img class="logo" src="./image-removebg-preview.png">
-            Sportivities</div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        Services 
-                        <div class="dropdown-arrow"></div>
-                    </a>
-                    <div class="dropdown">
-                        <a href="menu.html" class="dropdown-link">Menu</a>
-                        <a href="detail.html" class="dropdown-link">Detail</a>
-                        <a href="gallery.html" class="dropdown-link">Gallery</a>
-                        <a href="owner.html" class="dropdown-link">Owner</a>
-                        <a href="payment.html" class="dropdown-link">Payment</a>
-                    </div>
-                </li>
-                 
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact html.html" class="nav-link">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <div class="judul">
+      <img src="./image-removebg-preview.png" class="logo">
+      <span>Sportivities</span>
+    </div>
+
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+
+      <li class="nav-item">
+        <a href="#" class="nav-link dropdown-toggle">
+          Services <span class="arrow"></span>
+        </a>
+        <ul class="dropdown">
+          <li><a href="menu.html" class="dropdown-link">Menu</a></li>
+          <li><a href="detail.html" class="dropdown-link">Detail</a></li>
+          <li><a href="gallery.html" class="dropdown-link">Gallery</a></li>
+          <li><a href="owner.html" class="dropdown-link">Owner</a></li>
+          <li><a href="payment html.html" class="dropdown-link">Payment</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="contact html.html" class="nav-link">Contact</a></li>
+    </ul>
+
+  </div>
+</nav>
     <section class="intro">
   <video autoplay muted loop playsinline class="bg-video">
     <source src="0422.mp4" type="video/mp4">
@@ -381,6 +380,37 @@
 <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("nav-menu");
+
+  // hamburger menu
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+  });
+
+  // dropdown klik (mobile)
+  document.querySelectorAll(".dropdown-toggle").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+
+      const parent = this.parentElement;
+
+      document.querySelectorAll(".nav-item").forEach(item => {
+        if (item !== parent) {
+          item.classList.remove("active");
+        }
+      });
+
+      parent.classList.toggle("active");
+    });
+  });
+
+});
+</script>
 
 <script >
 const items = document.querySelectorAll(".timeline-item");
