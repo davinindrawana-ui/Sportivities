@@ -150,49 +150,50 @@
     </section>
 
     <!-- Contact Form -->
-    <section class="contact-form-section">
-        <div class="container">
-            <div class="form-container">
-                <h2 class="section-title">Kirim Pesan</h2>
-                <form class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label><i class="fas fa-user"></i> Nama Lengkap</label>
-                            <input type="text" placeholder="Masukkan nama lengkap" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-phone"></i> Nomor Telepon</label>
-                            <input type="tel" placeholder="08xx-xxxx-xxxx" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" placeholder="email@example.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label><i class="fas fa-building"></i> Jenis Lapangan</label>
-                            <select required>
-                                <option value="">Pilih lapangan</option>
-                                <option value="renang">Renang</option>
-                                <option value="basket">Basket</option>
-                                <option value="voli">Voli</option>
-                                <option value="futsal">Futsal</option>
-                                <option value="badminton">Badminton</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-message"></i> Pesan</label>
-                        <textarea rows="5" placeholder="Ceritakan kebutuhan Anda..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-large">
-                        <i class="fas fa-paper-plane"></i> Kirim Pesan
-                    </button>
-                </form>
-            </div>
+    <section class="contact">
+  <div class="contact-wrapper">
+
+    <!-- Kiri (Info) -->
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>Feel free to contact us for bookings, questions, or any support you need. We're here to help you get the best experience.</p>
+
+      <div class="info-box">
+        <div class="info-item">
+          <h4>📍 Location</h4>
+          <p>Tanggerang, Indonesia</p>
         </div>
-    </section>
+
+        <div class="info-item">
+          <h4>📞 Phone</h4>
+          <p>+62 812-3456-7890</p>
+        </div>
+
+        <div class="info-item">
+          <h4>✉️ Email</h4>
+          <p>sportspace@email.com</p>
+        </div>
+
+        <a href="#" class="wa-btn">Chat via WhatsApp</a>
+        
+      </div>
+    </div>
+
+    <!-- Kanan (Form) -->
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Subject">
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    
+
+  </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
