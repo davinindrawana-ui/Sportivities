@@ -576,13 +576,3 @@ body {
   transform: scale(0.98);
 }
 
-.wa-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px;
-  background: #25D366;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-}
